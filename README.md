@@ -1,16 +1,3 @@
 # budgeting_for_lexingtons
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+A simple mobile app I created that connects to my budgeting google sheets page. Now, I have a clean user interface from my phone that I can use to append expenses to my google sheets as I make them.
