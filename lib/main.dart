@@ -1,7 +1,7 @@
 // Copyright 2018 The Flutter team. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:budgeting_for_lexingtons/page/create_sheets_page.dart';
@@ -11,6 +11,7 @@ import 'package:budgeting_for_lexingtons/widget/popup.dart';
 
 Future main() async {
   await Future.delayed(const Duration(milliseconds: 200));
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
 
   // await BudgetSheetApi.init();

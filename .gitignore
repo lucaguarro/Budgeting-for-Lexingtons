@@ -1,4 +1,5 @@
 /assets/sheet_creds.txt
+.env
 
 GeneratedPluginRegistrant.java
 android/app/src/main/res/*/*.png
