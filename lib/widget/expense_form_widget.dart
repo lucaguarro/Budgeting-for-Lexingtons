@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:budgeting_for_lexingtons/model/expense.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // <-- Add this
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'button_widget.dart';
 
@@ -30,7 +30,18 @@ class _ExpenseFormWidgetState extends State<ExpenseFormWidget> {
   ];
   String _category = 'Groceries';
 
-  List<String> currencies = ['USD', 'EUR', 'MXN'];
+  List<String> currencies = [
+    'USD', // 🇺🇸 United States Dollar
+    'EUR', // 🇪🇺 Euro
+    'MXN', // 🇲🇽 Mexican Peso
+    'JPY', // 🇯🇵 Japanese Yen
+    'CNY', // 🇨🇳 Chinese Yuan
+    'NZD', // 🇳🇿 New Zealand Dollar
+    'CAD', // 🇨🇦 Canadian Dollar
+    'AUD', // 🇦🇺 Australian Dollar
+    'GBP', // 🇬🇧 British Pound
+    'CHF', // 🇨🇭 Swiss Franc
+  ];
   String _currency = 'USD';
 
   late TextEditingController controllerAmount;
@@ -61,37 +72,36 @@ class _ExpenseFormWidgetState extends State<ExpenseFormWidget> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      Form(
-          key: formKey,
-          child: ListView(
-            children: [
-              buildDate(),
-              const SizedBox(height: 16),
-              buildAmountWithCurrency(),
-              const SizedBox(height: 16),
-              buildStore(),
-              const SizedBox(height: 16),
-              buildCategory(),
-              const SizedBox(height: 16),
-              buildDetails(),
-              const SizedBox(height: 16),
-              buildSubmit(),
-            ],
-          )
-      );
+  Widget build(BuildContext context) => Form(
+    key: formKey,
+    child: ListView(
+      children: [
+        buildDate(),
+        const SizedBox(height: 16),
+        buildAmountWithCurrency(),
+        const SizedBox(height: 16),
+        buildStore(),
+        const SizedBox(height: 16),
+        buildCategory(),
+        const SizedBox(height: 16),
+        buildDetails(),
+        const SizedBox(height: 16),
+        buildSubmit(),
+      ],
+    ),
+  );
 
   Widget buildCategory() => DropdownButtonFormField(
     items: categories.map((String category) {
       return DropdownMenuItem(
-          value: category,
-          child: Row(
-            children: <Widget>[
-              Icon(Icons.category),
-              const SizedBox(width: 8),
-              Text(category),
-            ],
-          )
+        value: category,
+        child: Row(
+          children: <Widget>[
+            Icon(Icons.category),
+            const SizedBox(width: 8),
+            Text(category),
+          ],
+        ),
       );
     }).toList(),
     onChanged: (newValue) {
@@ -156,9 +166,22 @@ class _ExpenseFormWidgetState extends State<ExpenseFormWidget> {
             border: OutlineInputBorder(),
           ),
           items: currencies.map((String currency) {
+            final currencyDisplay = {
+              'USD': '🇺🇸 USD',
+              'EUR': '🇪🇺 EUR',
+              'MXN': '🇲🇽 MXN',
+              'JPY': '🇯🇵 JPY',
+              'CNY': '🇨🇳 CNY',
+              'NZD': '🇳🇿 NZD',
+              'CAD': '🇨🇦 CAD',
+              'AUD': '🇦🇺 AUD',
+              'GBP': '🇬🇧 GBP',
+              'CHF': '🇨🇭 CHF',
+            }[currency] ?? currency;
+
             return DropdownMenuItem(
               value: currency,
-              child: Text(currency),
+              child: Text(currencyDisplay),
             );
           }).toList(),
           onChanged: (newValue) {
